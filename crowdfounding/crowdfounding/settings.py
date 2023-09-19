@@ -33,8 +33,13 @@ DEBUG = os.environ.get(
     'False'
     != 'False'
 )
-ALLOWED_HOSTS = ["https://launchmybusiness.fly.dev", "https://frontend-crowdfunding.netlify.app","127.0.0.1", "localhost",]
-CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS =  [
+     "frontend-crowdfunding.netlify.app",
+     "launchmybusiness.fly.dev",
+    "localhost",
+     "127.0.0.1",
+]
+CORS_ALLOWED_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
 
