@@ -64,7 +64,7 @@ class ProjectDetail(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
             )
-    def delete(self, request, pk):
+    def delete(self, request, pk, formay=None):
         project = self.get_object(pk)
         project.delete()
         serializer = ProjectDetailSerializer(
