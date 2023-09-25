@@ -107,6 +107,14 @@ class PledgeList(APIView):
 class PledgeDetail(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
+    def get_object(self, pk):
+        try:
+            pledge = Pledge.objects.get(pk=pk)
+            self.check_object_permissions(self.request, pledge)
+            return pledge
+        except Pledge.DoesNotExist:
+            raise Http404
+        
     def put(self, request, pk):
         pledges = self.get_object(pk)
         serializer = PledgeDetailSerializer(
