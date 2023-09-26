@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.apps import apps
 
 class PledgeSerializer(serializers.ModelSerializer):
-    supporter = serializers.ReadOnlyField(source='owner.id')
+    owner = serializers.ReadOnlyField(source='owner.id')
     class Meta:
         model = apps.get_model('projects.Pledge')
         fields = '__all__'
@@ -16,7 +16,7 @@ class PledgeDetailSerializer(PledgeSerializer):
         return instance
 
 class ProjectSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.id')
+    supporter = serializers.ReadOnlyField(source='owner.id')
 
     class Meta:        
         model = apps.get_model('projects.Project')        
